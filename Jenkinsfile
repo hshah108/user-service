@@ -13,6 +13,6 @@ node{
 		sh 'sudo docker build -t hshah108/user-service:1.0.0 .'
 	}
 	stage(' Run container') {
-		sh 'sudo docker run -p 8081:8081 -d --net=host --name user-service hshah108/user-service:1.0.0'
+		sh 'sudo docker run -d --net=host --name user-service hshah108/user-service:1.0.0'
 	}
 }
