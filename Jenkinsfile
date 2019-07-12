@@ -12,7 +12,7 @@ node{
 	stage( 'Build Docker Image') {
 		sh 'sudo docker build -t hshah108/user-service:1.0.0 .'
 	}
-	stage(' Run container') {
+	stage(' Run docker container') {
 		sh 'sudo docker run -d --net=host --name user-service hshah108/user-service:1.0.0'
 	}
 }
