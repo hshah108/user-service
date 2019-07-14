@@ -13,6 +13,6 @@ node{
 		sh 'sudo docker build -t hshah108/user-service:1.0.0 .'
 	}
 	stage(' Run docker container') {
-		sh 'sudo docker run -d --net=host --name user-service hshah108/user-service:1.0.0'
+		sh 'sudo docker run -d --net=techotip --name user-service hshah108/user-service:1.0.0'
 	}
 }

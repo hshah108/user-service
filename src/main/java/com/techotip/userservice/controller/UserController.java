@@ -1,10 +1,13 @@
 package com.techotip.userservice.controller;
 
 import com.techotip.userservice.model.Order;
+import com.techotip.userservice.model.Orders;
 import com.techotip.userservice.model.User;
 import com.techotip.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.aggregation.ArrayOperators;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -33,12 +36,14 @@ public class UserController {
     }
 
     @GetMapping("/users/{userId}/orders")
-    public Order getOrder(@PathVariable Integer userId) {
-        return userService.getOrder(userId);
+    public Orders getOrderByUserId(@PathVariable Integer userId) {
+        return userService.getOrdersByUserId(userId);
     }
 
     @PostMapping("/users/{userId}/orders")
-    public Order putOrder(@PathVariable Integer userId, @RequestBody Order order) {
-        return userService.putOrder(userId, order);
+    public ResponseEntity createOrder(@PathVariable Integer userId, @RequestBody Order order) {
+        order.setUserId(userId);
+        userService.createOrder(order);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

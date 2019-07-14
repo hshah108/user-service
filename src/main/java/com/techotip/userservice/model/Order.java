@@ -14,4 +14,5 @@ public class Order {
     Integer orderId;
     String name;
     String description;
+    Integer userId;
 }
